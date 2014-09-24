@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/styleIcon.css' />
+    <link href="stylesheets/ui/jquery-ui.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= content %></p>
+  
+    <header></header>
+
+    <section>
+      <article>
+        
+        <form method="post" action="/configs">
+          <span id ="origen-Info" class="ui-icon ui-icon-info" style="float:left;"></span>
+          <label for="origin">Origen </label>
+          <select id ="origin" name="origin" value="<%= origin %>">
+              <% for(var i = 0; i<serversList.length; i++){ %>
+                <% if(serversList[i].name == origin ) { %>
+                  <option value="<%=serversList[i].name %>" selected="selected"><%=serversList[i].name %></option>
+                <% }else{ %>
+                  <option value="<%=serversList[i].name %>"><%=serversList[i].name %></option>
+                <% } %>
+              <% } %>
+          </select>
+          <div class="separa"></div>
+          <span id ="destination-Info" class="ui-icon ui-icon-info" style="float:left;"></span>
+          <label for="destination" >Destino</label>
+          <select id ="destination" name="destination" value="<%= destination %>">
+             <% for(var i = 0; i<serversList.length; i++){ %>
+                <% if(serversList[i].name == destination ) { %>
+                  <option value="<%=serversList[i].name %>" selected="selected"><%=serversList[i].name %></option>
+                <% }else{ %>
+                  <option value="<%=serversList[i].name %>"><%=serversList[i].name %></option>
+                <% } %>
+              <% } %>
+          </select>
+          <div id="serverTools">
+            <span id ="add-server-Info" class="ui-icon ui-icon-info" style="float:right;"></span>
+            <span id="add-server" class="icon-plus"></span>
+           
+          </div>
+          <div id="addServer" class="miniForm">
+            <!-- add new server -->
+            <span id ="svr_name-Info" class="ui-icon ui-icon-info" style="float:left;"></span>
+            <label for="svr_name">Nombre</label>
+            <input id="svr_name" type="text" name="svr_name" />
+
+           
+            <label for="svr_host"> <span id ="svr_host-Info" class="ui-icon ui-icon-info" style="float:left;"></span>Host</label>
+            <input id="svr_host" type="text" name="svr_host" />
+
+
+            <label for="svr_user"><span id ="svr_user-Info" class="ui-icon ui-icon-info" style="float:left;"></span>Usuario</label>
+            <input id="svr_user" type="text" name="svr_user" />
+
+
+            <label for="svr_pass">Contraseña</label>
+            <input id="svr_pass" type="text" name="svr_pass" />
+
+            <label for="svr_rootPath"><span id ="svr_rootPath-Info" class="ui-icon ui-icon-info" style="float:left;"></span>Directorio raíz</label>
+            <input id="svr_rootPath" type="text" name="svr_rootPath" />
+
+            <label for="svr_workDir">Directorio de respaldo</label>
+            <input id="svr_workDir" type="text" name="svr_workDir" />
+
+            <input id = "addBtn" type="button" name="addBtn" value="Agregar" />
+            <!-- add new server -->
+          </div>
+          <label for="flow"><span id ="flow-Info" class="ui-icon ui-icon-info" style="float:left;"></span>Flujo</label>
+          <select id ="flow" name="flow">
+            <option value=<%= flow %> selected="selected"><%= flow.toUpperCase() %></option>
+            <%  if(flow=="iscsi") { %>
+            <option value="ftp">FTP</option>
+            
+            <% } else{ %>
+              <option value="iscsi">ISCSI</option>
+            <%}%>
+          </select>
+
+          <h2>Procesos Remotos</h2>
+          <div class="ui-state-highlight ui-corner-all">
+            <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em; margin-left: .5em;"></span>
+              Los procesos seleccionados correrán en el servidor de respaldo, si no son seleccionados correrán dentro del core de respaldos</p>
+          </div>
+          <div class="separa"></div>
+          <!--<input type="checkbox" id="brute" />-->
+          <select class="servicios" id ="brute" name="brute" value="<%= brute %>">
+              <option value="local">local</option>
+              <% for(var i = 0; i<serversList.length; i++){ %>
+                <% if(serversList[i].name == brute ) { %>
+                  
+                  <option value="<%=serversList[i].name %>" selected="selected"><%=serversList[i].name %></option>
+                <% }else{ %>
+                  <option value="<%=serversList[i].name %>"><%=serversList[i].name %></option>
+                <% } %>
+              <% } %>
+          </select>
+          <label for="brute">Lista de descarga en bruto</label>
+          
+          <!--<input type="checkbox" id="discard" />-->
+          <select class="servicios" id ="discard" name="discard" value="<%= discard %>">
+              <option value="local">local</option>
+              <% for(var i = 0; i<serversList.length; i++){ %>
+                <% if(serversList[i].name == discard ) { %>
+                  
+                  <option value="<%=serversList[i].name %>" selected="selected"><%=serversList[i].name %></option>
+                <% }else{ %>
+                  <option value="<%=serversList[i].name %>"><%=serversList[i].name %></option>
+                <% } %>
+              <% } %>
+          </select>
+          <label for="discard">Omitir carpetas</label>
+          
+          <!--<input type="checkbox" id="inteligent" />-->
+          <select class="servicios" id ="inteligent" name="inteligent" value="<%= inteligent %>">
+              <option value="local">local</option>
+              <% for(var i = 0; i<serversList.length; i++){ %>
+                <% if(serversList[i].name == inteligent ) { %>
+                  
+                  <option value="<%=serversList[i].name %>" selected="selected"><%=serversList[i].name %></option>
+                <% }else{ %>
+                  <option value="<%=serversList[i].name %>"><%=serversList[i].name %></option>
+                <% } %>
+              <% } %>
+          </select>
+          <label for="inteligent">Lista de descarga inteligente</label>
+          
+          <!--<input type="checkbox" id="daemons" />-->
+          <select class="servicios" id ="daemons" name="daemons" value="<%= daemons %>">
+              <option value="local">local</option>
+              <% for(var i = 0; i<serversList.length; i++){ %>
+                <% if(serversList[i].name == daemons ) { %>
+                  
+                  <option value="<%=serversList[i].name %>" selected="selected"><%=serversList[i].name %></option>
+                <% }else{ %>
+                  <option value="<%=serversList[i].name %>"><%=serversList[i].name %></option>
+                <% } %>
+              <% } %>
+          </select>
+          <label for="daemons">Lista de procesos</label>
+
+          <input id ="aceptBtn" type="submit" name="Submit" value="Guardar">
+          
+        </form>
+
+      </article>
+    </section>
+
+    <footer></footer>
+    <script type="text/javascript" src="javascripts/jquery-1.11.1.min.js" ></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script src="javascripts/config.js"></script>
+    
+  </body>
+</html>

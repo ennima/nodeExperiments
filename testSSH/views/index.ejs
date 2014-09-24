@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= conten %></p>
+    <br/>
+    <form method="post" action="/">
+    	<input id="name" type="text" name="user[name]">
+    	<input id="email" type="text" name="user[email]">
+    	<input type="submit" name="Submit">
+    	<input id = "btn" type="button" name="BTN">
+    </form>
+    <div id="msg">y</div>
+    <script type="text/javascript" src="/javascripts/jquery-1.11.1.min.js" ></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    		$("#btn").click(function(){
+    			$("#msg").text("WOOW");
+    			var sendInfo = {
+    				name:$("#name").val(),
+    				email:$("#email").val()
+    			};
+
+    			$.ajax({
+    				type:"POST",
+    				url:"/ajax",
+    				success: function(msg){
+    					alert(msg);
+    				},
+    				data:{"val":"coco"},
+    				error: function(msg){
+    					alert("ERROR: "+msg);
+    				}
+    			});
+    		});
+    	});
+    </script>
+  </body>
+</html

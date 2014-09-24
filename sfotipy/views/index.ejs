@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Artists</h1>
+    <ul>
+    	<% artists.forEach(function(artist)){ %>
+    	<li><%=artist.name%></li>
+    	<%})%>
+    </ul>
+  </body>
+</html>

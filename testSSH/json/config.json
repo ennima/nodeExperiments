@@ -1,0 +1,9 @@
+{
+    "origin": "server1",
+    "destination": "server2",
+    "flow": "ftp",
+    "brute": "server1",
+    "discard": "server1",
+    "inteligent": "server1",
+    "daemons": "server1"
+}

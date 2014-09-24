@@ -1,0 +1,82 @@
+$font-size = 16px
+$iconNormalColor = #060
+$iconHoverColor = #f6f
+
+fullHDw = 1920px
+fullHDh = 1080px
+desktop = "all and (min-width: "+fullHDw/2+") and (max-width: "+fullHDw+")"
+mobile = "all and (max-width: "+fullHDw/3+")"
+body
+  padding: 50px
+  font: $font-size "Lucida Grande", Helvetica, Arial, sans-serif
+a
+  color: #000
+@media desktop
+	section
+		width: 70%
+		margin-left:15%
+@media mobile
+	section
+
+			width: 100%
+article 
+	
+	width: 100%
+
+article form 
+	
+	width: 100%
+	font-size: 0.9em
+
+article form select
+	width: 200px
+	display:block;
+	
+
+article form input[type="button"],input[type="submit"]
+	
+	width: 20%
+	display:block;
+	
+
+article form .servicios
+	background: #fff
+	width: 20%
+	float:left
+	margin-right:0.9em
+
+
+article form label
+	font-size: 1.5em
+	display:block
+
+
+article form .servicios + label
+	
+	width: 70%
+	font-size: 1.5em
+	display:block
+	
+
+
+
+
+
+
+#serverTools
+	font-size: 1.5em;
+	color:$iconNormalColor
+	text-align:right
+	
+
+#serverTools :hover
+	color:$iconHoverColor
+	cursor:pointer
+
+#addServer
+	padding: 2em 0em 2em 0em
+
+.separa
+	
+	width: 100%
+	height: 2em

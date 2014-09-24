@@ -1,0 +1,28 @@
+[
+	{
+    
+	    "name": "server1", 
+	    "host": "192.168.196.74", 
+	    "user": "Noticias", 
+	    "pass": "adminGV",
+	    "rootPath": "/mnt/Noticias/VBackup/Noticias", 
+	    "workDir": "RESPALDO OFFLINE2",
+	    "appDir": "ftpFlow",
+	    "type":"destination"
+ 	
+ 	},
+ 	{
+    
+	    "name": "server2", 
+	    "host": "192.168.196.139", 
+	    "user": "mxfmovie", 
+	    "pass": "",
+	    "rootPath": "V:/MXF", 
+	    "workDir": "",
+	    "appDir": "ftpFlow",
+	    "type":"origin"
+
+ 	}
+
+
+]
