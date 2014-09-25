@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Login</h1>
-     <form method="post" action="/">
+     <form id ="loginForm" method="post" action="/users">
         <label for="name">Nombre:</label>
         <input id="name" type="text" name="name">
         <label for="pass">Pass :</label>
@@ -16,11 +16,21 @@
         <!--<input id = "btn" type="button" name="BTN">-->
     </form>
     <script type="text/javascript" src="/javascripts/jquery-1.11.1.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/md5.js" ></script>
     <script type="text/javascript">
     	$(document).ready(function(){
-    		
-    		
+    		//cryp = md5("a");
+        //alert("a  "+cryp);
+        var hash = CryptoJS.MD5("lolo")
+    		console.log(hash.toString());  
+        $("#pass").val("");
     	});
+      $("#loginForm").submit(function(event){
+        var hash = CryptoJS.MD5($("#pass").val());
+        console.log(hash.toString()); 
+        $("#pass").val(hash);
+        alert("submit....");
+      });
     </script>
   </body>
 </html>
